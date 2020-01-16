@@ -6,9 +6,9 @@ import java.time.format.DateTimeFormatter;
 public class MenuItem {
     private String name;
     private double price;
-    private String description = null;
+    private String description;
     private String category;
-    private boolean isNew = false;
+    private boolean isNew;
     private LocalDate dateAdded;
 
     public MenuItem(String name, double price, String category, boolean isNew, LocalDate dateAdded){
@@ -18,6 +18,14 @@ public class MenuItem {
         this.description = getDescription();
         this.isNew = isNew;
         this.dateAdded = dateAdded;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public void setName(){
+
     }
 
     public String getDescription(){

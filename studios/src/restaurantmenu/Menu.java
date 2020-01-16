@@ -20,6 +20,21 @@ public class Menu {
         this.menuItems = aMenuItems;
     }
 
+    public void addMenuItem(MenuItem item){
+        menuItems.add(item);
+        lastUpdate = LocalDate.now();
+    }
+
+    public void removeMenuItem(String itemName){
+        for(MenuItem item : menuItems){
+            if(item.getName().equals(itemName)){
+                menuItems.remove(item);
+                lastUpdate = LocalDate.now();
+                break;
+            }
+        }
+    }
+
     //currently this is not being used, but may be needed later
     public LocalDate getLastUpdate(){
         if(this.lastUpdate == null){
@@ -38,11 +53,8 @@ public class Menu {
     }
 
     public boolean isLastDate(LocalDate date){
-        //check for null and return true, just so it can get set first
-        if(this.lastUpdate == null)
-            return true;
         //if the date is less than 0 return true
-        else if(date.compareTo(this.lastUpdate) < 0)
+        if(date.compareTo(this.lastUpdate) < 0 && this.lastUpdate != null)
             return false;
         //the date is newer than the previous date set
         else
@@ -63,4 +75,6 @@ public class Menu {
         returnString += "\nMenu Updated: " + this.getStringDate();
         return returnString;
     }
+
+
 }
